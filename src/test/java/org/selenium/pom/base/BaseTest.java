@@ -27,7 +27,6 @@ import java.util.List;
 public class BaseTest {
     private final ThreadLocal<DriverManagerAbstract> driverManager = new ThreadLocal<>();
     private final ThreadLocal<WebDriver> driver = new ThreadLocal<>();
-
     private void setDriverManager(DriverManagerAbstract driverManager){
         this.driverManager.set(driverManager);
     }
@@ -48,7 +47,7 @@ public class BaseTest {
     @BeforeMethod
     public synchronized void startDriver(@Optional String browser){
         browser = System.getProperty("browser", browser);
-//        if(browser == null) browser = "CHROME";
+        if(browser == null) browser = "CHROME";
 //        setDriver(new DriverManagerOriginal().initializeDriver(browser));
 //        setDriver(DriverManagerFactory.getManager(DriverType.valueOf(browser)).createDriver());
         setDriverManager(DriverManagerFactoryAbstract.
@@ -64,7 +63,7 @@ public class BaseTest {
         Thread.sleep(300);
         System.out.println("CURRENT THREAD: " + Thread.currentThread().threadId() + ", " +
                 "DRIVER = " + getDriver());
-//        getDriver().quit();
+        getDriver().quit();
         if(result.getStatus() == ITestResult.FAILURE){
             File destFile = new File("scr" + File.separator + browser + File.separator +
                     result.getTestClass().getRealClass().getSimpleName() + "_" +

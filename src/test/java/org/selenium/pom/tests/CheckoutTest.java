@@ -40,7 +40,6 @@ public class CheckoutTest extends BaseTest {
                 setUsername(username).
                 setPassword("demopwd").
                 setEmail(username + "@askomdch.com");
-
         SignUpApi signUpApi = new SignUpApi();
         signUpApi.register(user);
         CartApi cartApi = new CartApi(signUpApi.getCookies());
@@ -54,5 +53,6 @@ public class CheckoutTest extends BaseTest {
                 selectDirectBankTransfer().
                 placeOrder();
         Assert.assertEquals(checkoutPage.getNotice(), "Thank you. Your order has been received.");
+
     }
 }
