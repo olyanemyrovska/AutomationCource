@@ -14,7 +14,7 @@ import java.io.IOException;
 public class AddToCartTest extends BaseTest {
 
     @Test
-    //Adding some changes to verify if Jenkins Job is triggered
+    //Adding some more and more changes to verify if Jenkins Job is triggered
     public void addToCartFromStorePage() throws IOException {
         Product product = new Product(1215);
         CartPage cartPage = new StorePage(getDriver()).load().
